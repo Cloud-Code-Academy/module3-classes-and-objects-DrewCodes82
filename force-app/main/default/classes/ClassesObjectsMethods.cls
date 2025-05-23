@@ -67,14 +67,18 @@ public with sharing class ClassesObjectsMethods {
      */
     public static List<Boolean> checkStringContent(String input) {
         // Initialize a list to store the results
+        List<Boolean> results = new List<Boolean>();
         
         // Check if the string starts with 'Sales'
-        
+        Boolean startsWithSales = input.startsWith('Sales');
+        results.add(startsWithSales);
         // Check if the string ends with 'Force'
-        
+        Boolean endsWithForce = input.endsWith('Force');
+        results.add(endsWithForce);
         // Check if the string contains 'Awesome'
-        
-        return null; // Replace null with the variable you used to store the result
+        Boolean containsAwesome = input.contains('Awesome');
+        results.add(containsAwesome);
+        return results; // Replace null with the variable you used to store the result
     }
 
     /**
@@ -86,15 +90,36 @@ public with sharing class ClassesObjectsMethods {
      */
     public static String removeDuplicateWords(String sentence) {
         // Split the sentence into words
-
+        List<String> words = sentence.split(' ');
         // Create a set to store the unique words
-
+        /* COMMENT added for Riley/Code Reviewer to see original implementation:
+        Set<String> deDupWords = new Set<String>();
+        for (String word : words){
+            deDupWords.add(word);
+        }
+        String newSentence = deDupWords.toString();
+        return newSentence; 
+        this produced a String with the following format: {Salesforce, is}.
+        I used GPT to help troubleshoot, finding the join method:
+        String newSentence = String.join(new List<String>(deDupWords), ' ');
+        but it made me aware that the order of words isn't always guaranteed with Sets and it provided 
+        a chance to refactor and ensure that the order of the words was maintained by checking if the
+        word already exists in the Set, and if it doesn't adding it to both a new List of Unique words to 
+        maintain the correct order, and the Set, to deduplicate and skip adding to the list if it already exists */
+        Set<String> seenWords = new Set<String>();
+        List<String> uniqueWords = new List<String>();
         // Add each word to the set
-
+        for (String word : words){
+            if(!seenwords.contains(word)){
+                uniqueWords.add(word);
+                seenWords.add(word);
+            }
+            
+        }
         // Join the unique words back into a sentence
-
+        
         // Return the sentence with unique words
-        return null; // Replace null with the variable you used to store the result
+        return String.join(uniqueWords, ' '); // Replace null with the variable you used to store the result
     }
 
     /**
@@ -107,7 +132,8 @@ public with sharing class ClassesObjectsMethods {
      */
     public static Integer countVowels(String str) {
         // Initialize the result Integer
-
+        Integer vowelCounter = 0;
+        List<String> vowels = new List<String>{'a','e','i','o','u'};
         /*
         for () {
             // get individual characters from the string - hint use substring or split
@@ -115,8 +141,16 @@ public with sharing class ClassesObjectsMethods {
             // if it is a vowel, increment the result Integer
         }
         */
+        List<String> letters = str.split('');
+        for (String letter : letters){
+            vowelCounter += letter.countMatches(vowels[0])
+            + letter.countMatches(vowels[1])
+            + letter.countMatches(vowels[2])
+            + letter.countMatches(vowels[3])
+            + letter.countMatches(vowels[4]);
+        }
 
-        return null; // Replace null with the variable you used to store the result
+        return vowelCounter; // Replace null with the variable you used to store the result
     }
 
     /**
