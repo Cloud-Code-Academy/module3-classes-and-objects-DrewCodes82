@@ -30,7 +30,7 @@
  */
 
 public with sharing class ClassesObjectsMethods {
-    
+
     /**
      * Question 1
      * It initializes a String to "Hello, Salesforce!" and demonstrates usage of
@@ -165,16 +165,19 @@ public with sharing class ClassesObjectsMethods {
         List<String> scientistNames = new List<String>{'Tim Berners-Lee', 'Alan Turing', 'Grace Hopper', 'Donald Knuth', 'Guido van Rossum', 'Ken Thompson', 'Stephen Hawking'};
 
         // The variable to store the concatenated string
-
+        List<String> matches = new List<String>();
+        
         // Loop through the list of scientists' names
-
+        for (String name : scientistNames){
             // If the name doesn't contain the letter 'G', skip this iteration
+            if (name.toLowerCase().contains('g')){
+                // Add the name to the result string, followed by a comma
+                matches.add(name);
+            } 
 
-            // Add the name to the result string, followed by a comma
-
+        }
         // Remove the last comma from the result string
-
-        return null; // Replace null with the variable you used to store the result
+        return String.join(matches, ','); // Replace null with the variable you used to store the result
     }
 
     /**
