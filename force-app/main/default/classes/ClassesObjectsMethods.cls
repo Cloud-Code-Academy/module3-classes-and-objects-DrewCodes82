@@ -212,7 +212,7 @@ public with sharing class ClassesObjectsMethods {
         // Use Math class to generate number between 50 and 100
         Integer randomNumber = Integer.valueOf(Math.random() * 50) + 50;
         // Return the random integer
-        return randomNumber; // Replace null with the variable you used to store the result
+        return randomNumber; // Replace null with the variable you used to store the result        
     }
 
     /**
